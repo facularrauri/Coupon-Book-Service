@@ -1,0 +1,59 @@
+{
+  "server": {
+    "url": "http://localhost:3000",
+    "port": 3000,
+    "maxResultsLimit": 1000
+  },
+  "cors": {
+    "whitelist": "*"
+  },
+  "auth": {
+    "token": {
+      "secret": "secret",
+      "issuer": "api",
+      "algorithm": "HS256",
+      "expiresIn": 7776000,
+      "audience": ["web", "mobile"]
+    },
+    "refreshToken": {
+      "expiresIn": 15552000
+    },
+    "passwordTtl": 15552000000,
+    "refreshTokenTtl": 15552000000,
+    "passwordResetTokenTtl": 15552000000,
+    "verificationTokenTtl": 15552000000
+  },
+  "memCacheDuration": 60000,
+  "rateLimit": {
+    "window": "1m",
+    "requests": 1000
+  },
+  "mongo": {
+    "db": "api",
+    "url": "mongodb://mongodb-service/api?replicaSet=rs0"
+  },
+  "logger": {
+    "console": {
+      "level": "debug",
+      "timestamp": true,
+      "handleExceptions": true,
+      "humanReadableUnhandledException": true,
+      "colorize": true
+    }
+  },
+  "couponBook": {
+    "maxSyncGenerator": 1000,
+    "batchSize": 1000
+  },
+  "coupon": {
+    "lockDurationSeconds": 300
+  },
+  "redis": {
+    "host": "redis-service",
+    "port": "6379",
+    "password": ""
+  },
+  "rabbit": {
+    "url": "amqp://rabbitmq-service"
+  }
+}

@@ -1,0 +1,26 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  extends: ['standard', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  rules: {
+    'prettier/prettier': 'error',
+    'no-async-promise-executor': 0,
+    'no-useless-catch': 0,
+    'no-misleading-character-class': 0,
+    'no-use-before-define': 0,
+    'consistent-return': 0,
+    'no-underscore-dangle': 0,
+    'no-param-reassign': 0,
+    'no-continue': 0,
+    'no-shadow': 0,
+    'no-nested-ternary': 0,
+    'prefer-arrow-callback': 0,
+    'no-inner-declarations': 0,
+    'func-names': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    'no-new': 0,
+  },
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+  },
+}

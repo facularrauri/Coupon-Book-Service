@@ -1,0 +1,15 @@
+**/node_modules/
+**/dist
+.git
+.github
+npm-debug.log
+.coverage
+.coverage.*
+.env
+.aws
+sequelizeData.json
+.editorconfig
+.eslintrc.js
+.prettierrc
+.sequelizerc
+logs
