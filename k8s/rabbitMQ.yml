@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3.11-management-alpine
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672
+        envFrom:
+        - configMapRef:
+            name: rabbitmq-config
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 2Gi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-service
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+  - protocol: TCP
+    name: "rabbit"
+    port: 5672
+    targetPort: 5672
+    nodePort: 30672
+  - protocol: TCP
+    name: "rabbit-ui"
+    port: 15672
+    targetPort: 15672
+    nodePort: 31672
+  type: NodePort
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-config
+data:
+  RABBITMQ_DEFAULT_USER: "guest"
+  RABBITMQ_DEFAULT_PASS: "guest"
+              

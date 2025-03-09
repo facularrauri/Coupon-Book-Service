@@ -1,0 +1,6 @@
+resources:
+  - rabbitMQ.yml
+  - mongodb.yml
+  - redis.yml
+  - api.yml
+  - codes-worker.yml
